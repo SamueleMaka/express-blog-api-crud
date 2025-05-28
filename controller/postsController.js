@@ -75,7 +75,9 @@ const destroy = (req, res) =>{
         })
     }
     posts.splice(postIndex, 1)
-    res.sendStatus(204)
+    res.status(200).json({
+        dataEl: `l'elemento con ID ${postId} è stato eliminato`
+    })
 }
 
 const foodsController = {
