@@ -10,7 +10,7 @@ const posts = [
       "titolo": "Cracker alla barbabietola",
       "contenuto": "buono, semplice e delizioso",
       "immagine": "/images/cracker_barbabietola.jpeg",
-      "tags": ["casalingo", "sano", "facile"],
+      "tags": ["casalingo", "sano", "facile", "delizioso"],
       "id": 2
     },
     {
