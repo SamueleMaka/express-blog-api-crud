@@ -16,18 +16,8 @@ const index = (req,res) => {
 
 // show
 const show = (req,res) =>{ 
-    const postId = Number(req.params.id);
-    const currPost = posts.find((postToFind) => postToFind.id === postId)
-
-    if(currPost === undefined){
-        res.status(404);
-        res.json({
-            dataEl: "Elemento Inesistente"
-        })
-    }else{
-        res.json(currPost)
+        res.json(req.currPost)
         res.sendStatus(204);
-    }
 }
 
 
@@ -46,12 +36,6 @@ const update = (req,res) => {
     const postId = Number(req.params.id);
     const postUpdate = req.body;
     const currPost = posts.find((postToFind) => postToFind.id === postId)
-
-    if(!currPost){ // si controlla se effettivamente è stato trovato qualcosa, in caso contrario si invia un errore
-        return res.status(404).json({
-            dataEl: "Elemento Insesistente"
-        })
-    }
         currPost.titolo = postUpdate.titolo;
         currPost.contenuto = postUpdate.contenuto;
         currPost.tags = postUpdate.tags;
@@ -69,11 +53,6 @@ const destroy = (req, res) =>{
     const postIndex = posts.findIndex((currElem) => { // cerchiamo l'indice del post da eliminare
         return currElem.id === postId;
     })
-    if(postIndex === -1){ // si controlla che esista il post
-        return res.status(404).json({
-            dataEl: "Post non trovato"
-        })
-    }
     posts.splice(postIndex, 1)
     res.status(200).json({
         dataEl: `l'elemento con ID ${postId} è stato eliminato`

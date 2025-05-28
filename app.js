@@ -3,6 +3,7 @@ import router from "./routers/postsRouter.js";
 import routeErrorMiddleware from "./middleware/routeErrorMiddleware.js";
 import ErrorMiddleware from "./middleware/errorMiddleware.js";
 
+
 const app = express();
 const port = 3000;
 app.use(express.json()); //! Mettere sempre in cima, ci sono impazzito aiuto
