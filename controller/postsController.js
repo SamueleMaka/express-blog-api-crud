@@ -2,14 +2,9 @@ import posts from "../data.js";
 
 // index
 const index = (req,res) => { 
-    const searchParam = req.query.tags;
-    let searchResult = posts;
-    if(searchParam !== undefined){
-        searchResult = searchResult.filter(currPost => currPost.tags.includes(searchParam));
-    }
     res.json({
-        dataEl: searchResult,
-        indexEl: searchResult.length,
+        dataEl: req.searchResult,
+        indexEl: req.indexEl,
     });
 }
 
@@ -33,9 +28,8 @@ const store = (req,res) =>{
 
 // update
 const update = (req,res) => {
-    const postId = Number(req.params.id);
+    const postId = Number(req.params.id); // lo tengo solo per l'output
     const postUpdate = req.body;
-    const currPost = posts.find((postToFind) => postToFind.id === postId)
         currPost.titolo = postUpdate.titolo;
         currPost.contenuto = postUpdate.contenuto;
         currPost.tags = postUpdate.tags;
